@@ -33,5 +33,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, NewPostActivity.class);
             startActivity(intent);
         });
+
+        btnViewPosts.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ViewPostsActivity.class);
+            startActivity(intent);
+        });
     }
 }
