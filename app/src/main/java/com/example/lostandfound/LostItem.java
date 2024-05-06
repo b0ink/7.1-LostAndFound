@@ -1,10 +1,13 @@
 package com.example.lostandfound;
-
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+@Entity(tableName = "lost_items")
 public class LostItem {
 
     public enum REPORT_TYPE {
@@ -12,18 +15,27 @@ public class LostItem {
         REPORT_TYPE_FOUND
     }
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private REPORT_TYPE reportType;
     private String itemName;
     private String description;
     private String location;
 
-    private LocalDate dateReported;
+    private String dateReported;
     private String postersName;
     private String mobile;
 
-    public LostItem(int id, REPORT_TYPE reportType, String itemName, String description, String location, LocalDate dateReported, String postersName, String mobile) {
-        this.id = id;
+    public LostItem(REPORT_TYPE reportType, String itemName, String description, String location, String dateReported, String postersName, String mobile) {
         this.reportType = reportType;
         this.itemName = itemName;
         this.description = description;
@@ -49,8 +61,12 @@ public class LostItem {
         return location;
     }
 
-    public LocalDate getDateReported() {
+    public String getDateReported() {
         return dateReported;
+    }
+
+    public void setDateReported(String dateReported) {
+        this.dateReported = dateReported;
     }
 
     public String getPostersName() {
@@ -63,7 +79,12 @@ public class LostItem {
 
 
     public String formatTimeAgo() {
-        LocalDate date = this.dateReported;
+
+        LocalDate date = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            date = LocalDate.parse(this.dateReported, formatter);
+        }
         LocalDate currentDate = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             currentDate = LocalDate.now();
