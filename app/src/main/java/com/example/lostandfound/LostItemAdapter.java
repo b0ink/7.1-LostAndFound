@@ -77,6 +77,13 @@ public class LostItemAdapter extends RecyclerView.Adapter<LostItemAdapter.LostIt
             tvTimeReported.setText(lostItem.formatTimeAgo());
             tvTitle.setText(lostItem.getItemName());
             tvDescription.setText(lostItem.getDescription());
+
+            btnViewReport.setOnClickListener(view ->{
+                Intent intent = new Intent(view.getContext(), ViewLostItemActivity.class);
+                intent.putExtra(ViewLostItemActivity.EXTRA_LOST_ITEM_ID, lostItem.getId());
+                context.startActivity(intent);
+                ((Activity)context).finish();
+            });
         }
 
     }
