@@ -1,7 +1,9 @@
 package com.example.lostandfound;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +22,7 @@ public class ViewPostsActivity extends AppCompatActivity {
     private LostAndFoundDatabase lostAndFoundDatabase;
 
     private TextView tvNoPostsFound;
+    private Button btnNewPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +36,22 @@ public class ViewPostsActivity extends AppCompatActivity {
         });
 
         tvNoPostsFound = findViewById(R.id.tvNoPostsFound);
+        btnNewPost = findViewById(R.id.btnNewPost);
+
+        btnNewPost.setOnClickListener(view ->{
+            Intent intent = new Intent(this, NewPostActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
 
         ArrayList<LostItem> lostItems = new ArrayList<>();
         lostAndFoundDatabase = DatabaseHelper.getInstance(this).getLostAndFoundDatabase();
 
         lostItems.addAll(lostAndFoundDatabase.lostItemDao().getAllLostItems());
-        if(lostItems.size() == 0){
+        if (lostItems.size() == 0) {
             tvNoPostsFound.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             tvNoPostsFound.setVisibility(View.GONE);
         }
 //        LostItem test1 = new LostItem(LostItem.REPORT_TYPE.REPORT_TYPE_FOUND, "iPhone 14 Pro", "Found an iphone near the park", "The park", "2024-05-01", "Bob", "0123xxxxxx");

@@ -30,16 +30,36 @@
             android:id="@+id/tvNoPostsFound"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:fontFamily="@font/inter_medium"
-            android:text="No posts found"
+            android:text="No posts yet"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnNewPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:height="55dp"
+            android:backgroundTint="@color/secondary"
+            android:fontFamily="@font/inter_bold"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="@string/main_btnNewPost"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="6dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lostItemsRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="25dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
