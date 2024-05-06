@@ -17,7 +17,7 @@ public class DatabaseHelper {
     private DatabaseHelper(Context context) {
         this.context = context;
 
-        lostAndFoundDatabase = Room.databaseBuilder(context, LostAndFoundDatabase.class, "lost_and_found_database")
+        lostAndFoundDatabase = Room.databaseBuilder(context, LostAndFoundDatabase.class, "lost_and_found_database3")
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
