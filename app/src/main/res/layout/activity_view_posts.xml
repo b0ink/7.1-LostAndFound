@@ -26,6 +26,16 @@
             android:textColor="@color/primary"
             android:textSize="28sp" />
 
+        <TextView
+            android:id="@+id/tvNoPostsFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
+            android:text="No posts found"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lostItemsRecycler"
             android:layout_width="match_parent"

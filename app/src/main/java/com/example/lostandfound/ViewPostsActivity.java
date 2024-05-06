@@ -1,6 +1,8 @@
 package com.example.lostandfound;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,8 @@ public class ViewPostsActivity extends AppCompatActivity {
 
     private LostAndFoundDatabase lostAndFoundDatabase;
 
+    private TextView tvNoPostsFound;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +32,17 @@ public class ViewPostsActivity extends AppCompatActivity {
             return insets;
         });
 
+        tvNoPostsFound = findViewById(R.id.tvNoPostsFound);
+
         ArrayList<LostItem> lostItems = new ArrayList<>();
         lostAndFoundDatabase = DatabaseHelper.getInstance(this).getLostAndFoundDatabase();
 
         lostItems.addAll(lostAndFoundDatabase.lostItemDao().getAllLostItems());
-
+        if(lostItems.size() == 0){
+            tvNoPostsFound.setVisibility(View.VISIBLE);
+        }else{
+            tvNoPostsFound.setVisibility(View.GONE);
+        }
 //        LostItem test1 = new LostItem(LostItem.REPORT_TYPE.REPORT_TYPE_FOUND, "iPhone 14 Pro", "Found an iphone near the park", "The park", "2024-05-01", "Bob", "0123xxxxxx");
 //        lostAndFoundDatabase.lostItemDao().insert(test1);
 
