@@ -78,7 +78,7 @@ public class ViewLostItemActivity extends AppCompatActivity {
         btnRemovePost.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Confirmation")
-                    .setMessage("Are you sure you want to delete this psot?")
+                    .setMessage("Are you sure you want to delete this post?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
